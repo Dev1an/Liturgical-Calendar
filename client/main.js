@@ -12,6 +12,7 @@ Template.calendar.onCreated(function() {
 	this.autorun(() => {
 		this.currentDateDependency.depend()
 		if (this.remoteCalendar.month != this.currentDate.month()) {
+			this.remoteCalendar.data.set([])
 			this.remoteCalendar.loadMonth({month: this.currentDate.month(), year: this.currentDate.year()})
 		}
 	})
