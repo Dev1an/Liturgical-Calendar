@@ -48,7 +48,7 @@ Template.calendar.helpers({
 	},
 	infoFor(date, month) {
 		const template = Template.instance()
-		const info = template.remoteCalendar.data.get()[date]
+		const info = template.remoteCalendar.data.get()[date] || {}
 		if (month == template.currentDate.month()) return _.extend(info, {date})
 		else return {date}
 	}
