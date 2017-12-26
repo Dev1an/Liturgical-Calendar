@@ -7,21 +7,28 @@
 </body>
 
 <template name="calendar">
+	<p style="text-align: center">
+		<button class="back">&lt;</button>
+		{{currentDate.format "MMMM YYYY"}}
+		<button class="forward">&gt;</button>
+	</p>
 	<table width="100%">
 		<tr>
-			<th colspan="7">
-				<button class="back">&lt;</button>
-				{{currentDate.format "MMMM YYYY"}}
-				<button class="forward">&gt;</button>
-			</th>
+			<th>Monday</th>
+			<th>Tuesday</th>
+			<th>Wednesday</th>
+			<th>Thursday</th>
+			<th>Friday</th>
+			<th>Saturday</th>
+			<th>Sunday</th>
 		</tr>
 		{{#each weeks}}
 			<tr>
 				{{#each this}}
 					<td width="14%">
 						{{date}}
-						{{#with infoFor date}}
-							<p>{{title}}</p>
+						{{#with infoFor date month}}
+							<p>{{title}} <span style="color: gray">({{type}})</span></p>
 						{{/with}}
 					</td>
 				{{/each}}

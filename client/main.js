@@ -46,8 +46,10 @@ Template.calendar.helpers({
 		}
 		return weeks
 	},
-	infoFor(day) {
-		return Template.instance().remoteCalendar.data.get()[day]
+	infoFor(day, month) {
+		const template = Template.instance()
+		const info = template.remoteCalendar.data.get()[day]
+		if (month == template.currentDate.month()) return info
 	}
 });
 

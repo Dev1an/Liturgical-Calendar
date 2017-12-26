@@ -1,1 +1,7 @@
-/* CSS declarations go here */
+td {
+    vertical-align: top;
+    border: 1px solid #e7e7e7;
+}
+table {
+    border-collapse: collapse;
+}
