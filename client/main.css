@@ -1,7 +1,43 @@
 td {
     vertical-align: top;
     border: 1px solid #e7e7e7;
+    padding: 0.2em;
 }
 table {
     border-collapse: collapse;
+}
+
+.color-block {
+    padding: 1px 4px;
+    border-radius: 3px;
+    display: inline-block;
+}
+
+.color-block.RED {
+    background-color: #af0000;
+    color: white;
+}
+
+.color-block.ROSE {
+    background-color: #FF007F;
+    color: white;
+}
+
+.color-block.PURPLE {
+    background-color: #800080;
+    color: white;
+}
+
+.color-block.GREEN {
+    background-color: #008000;
+    color: white;
+}
+
+.color-block.WHITE {
+    border: 1px solid #dedede;
+}
+
+.color-block.GOLD {
+    background-color: #FFD700;
+    color: white;
 }
