@@ -1,0 +1,13 @@
+{
+  "name": "roman-calendar",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "meteor-node-stubs": "^0.3.2",
+    "moment": "^2.20.1",
+    "romcal": "^1.2.3"
+  }
+}

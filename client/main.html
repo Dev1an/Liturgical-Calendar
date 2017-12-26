@@ -1,0 +1,31 @@
+<head>
+	<title>roman-calendar</title>
+</head>
+
+<body>
+	<h1>Roman Calendar</h1>
+
+	{{> calendar}}
+</body>
+
+<template name="calendar">
+	<table>
+		<tr>
+			<th colspan="7">
+				<button class="back">&lt;</button>
+				{{currentDate.format "MMMM YYYY"}}
+				<button class="forward">&gt;</button>
+			</th>
+		</tr>
+		{{#each weeks}}
+			<tr>
+				{{#each this}}
+					<td>
+						<p>{{date}}</p>
+						<p>{{format "dddd"}}</p>
+					</td>
+				{{/each}}
+			</tr>
+		{{/each}}
+	</table>
+</template>
