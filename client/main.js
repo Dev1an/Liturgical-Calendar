@@ -50,6 +50,7 @@ Template.calendar.helpers({
 		const template = Template.instance()
 		const info = template.remoteCalendar.data.get()[date]
 		if (month == template.currentDate.month()) return _.extend(info, {date})
+		else return {date}
 	}
 });
 

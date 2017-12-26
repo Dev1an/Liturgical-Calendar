@@ -28,7 +28,9 @@
 					<td width="14%">
 						{{#with infoFor date month}}
 							<span class="{{liturgicalColor.key}} color-block">{{date}}</span>
-							<p>{{title}} <span style="color: gray">({{type}})</span></p>
+							{{#if title}}
+							<p>{{title}} <span style="color: gray">{{type}}</span></p>
+							{{/if}}
 						{{/with}}
 					</td>
 				{{/each}}
