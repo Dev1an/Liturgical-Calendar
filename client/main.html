@@ -20,9 +20,11 @@
 		{{#each weeks}}
 			<tr>
 				{{#each this}}
-					<td>
-						<p>{{date}}</p>
-						<p>{{format "dddd"}}</p>
+					<td width="14%">
+						{{date}}
+						{{#with infoFor date}}
+							<p>{{title}}</p>
+						{{/with}}
 					</td>
 				{{/each}}
 			</tr>

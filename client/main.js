@@ -1,23 +1,31 @@
 import { Template } from 'meteor/templating';
 import { Tracker } from 'meteor/tracker';
 import moment from 'moment'
+import {Calendar} from "./Calendar";
 
 import './main.html';
 
 Template.calendar.onCreated(function() {
 	this.currentDate = moment()
-	this.dependency = new Tracker.Dependency
+	this.currentDateDependency = new Tracker.Dependency
+	this.remoteCalendar = new Calendar
+	this.autorun(() => {
+		this.currentDateDependency.depend()
+		if (this.remoteCalendar.month != this.currentDate.month()) {
+			this.remoteCalendar.loadMonth({month: this.currentDate.month(), year: this.currentDate.year()})
+		}
+	})
 })
 
 Template.calendar.helpers({
 	currentDate() {
 		const template = Template.instance()
-		template.dependency.depend()
+		template.currentDateDependency.depend()
 		return template.currentDate
 	},
 	weeks() {
 		const template = Template.instance()
-		template.dependency.depend()
+		template.currentDateDependency.depend()
 		var firstDayOfMonth = template.currentDate.startOf('month')
 		const firstDayOfTheWeek = firstDayOfMonth.day() // 0 means sunday
 		const offsetDayCount = (firstDayOfTheWeek+6) % 7
@@ -36,16 +44,19 @@ Template.calendar.helpers({
 			weeks.push(weekDays)
 		}
 		return weeks
+	},
+	infoFor(day) {
+		return Template.instance().remoteCalendar.data.get()[day]
 	}
 });
 
 Template.calendar.events({
 	'click button.back'(event, template) {
 		template.currentDate.subtract(1, 'month')
-		template.dependency.changed()
+		template.currentDateDependency.changed()
 	},
 	'click button.forward'(event, template) {
 		template.currentDate.add(1, 'month')
-		template.dependency.changed()
+		template.currentDateDependency.changed()
 	}
 })
